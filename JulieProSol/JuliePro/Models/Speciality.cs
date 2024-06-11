@@ -6,7 +6,8 @@ namespace JuliePro.Models
     {
         public int Id { get; set; }
 
-        [StringLength(20, MinimumLength = 5, ErrorMessage ="Le nom de la spécialité doit être compris entre {2} et {1} caractères")]
+        [Required]
+        [StringLength(20, MinimumLength = 5, ErrorMessage ="The Speciality's {0} must be between {2} and {1} characters")]
         public string Name { get; set; }
     }
 }
