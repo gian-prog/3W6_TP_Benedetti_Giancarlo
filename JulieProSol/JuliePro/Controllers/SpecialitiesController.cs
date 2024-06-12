@@ -127,6 +127,11 @@ namespace JuliePro.Controllers
                 return Problem("Entity set 'MyDbContext.Speciality'  is null.");
             }
             var speciality = await _context.Speciality.FindAsync(id);
+            
+            foreach (Trainer trainer in _context.Trainer)
+            {
+                if(trainer.SpecialityId == speciality.Id) { TempData["ErrorMessage"] = "There's at least one Trainer with that speciality."; return RedirectToAction(nameof(Delete)); }
+            }
             if (speciality != null)
             {
                 _context.Speciality.Remove(speciality);
