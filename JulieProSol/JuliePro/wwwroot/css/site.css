@@ -16,3 +16,10 @@ html {
 body {
   margin-bottom: 60px;
 }
+button{
+margin: 7px;
+}
+.IndexButton{
+  background-color: rgb(255, 255, 255, 0.4);
+  color: white;
+}
