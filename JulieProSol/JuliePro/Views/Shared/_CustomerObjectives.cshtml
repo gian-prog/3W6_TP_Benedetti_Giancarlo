@@ -1,0 +1,12 @@
+﻿@model JuliePro.ViewModels.CustomerObjectivesVM
+<tr>
+    <td>@Model.Customers.FirstName @Model.Customers.LastName</td>
+    <td></td>
+    <td></td>
+    ­@{
+        int NbCompleteObjectives = Model.Objectives.Where(o => o.AchievedDate != null).Count();
+        int NBNomCompleteObjectives = Model.Objectives.Where(o => o.AchievedDate == null).Count();
+    }
+    <td>@NbCompleteObjectives</td>
+    <td>@NBNomCompleteObjectives</td>
+</tr>

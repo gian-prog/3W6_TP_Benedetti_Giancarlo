@@ -1,0 +1,15 @@
+﻿@using JuliePro.Models;
+@model JuliePro.ViewModels.TrainerObjectivesVM
+<table>
+<tr>
+    <th>Customer's name</th>
+    <th>Nb Completed Objectives</th>
+    <th>Nb Incompleted Objectives</th>
+    <th>Status</th>
+</tr>
+    @foreach (var customer in Model.customerObjectives)
+    {
+        <partial name="_CustomerObjectives" model="customer"/>
+    }
+
+</table>

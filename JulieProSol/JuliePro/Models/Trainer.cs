@@ -26,5 +26,7 @@ namespace JuliePro.Models
         public int SpecialityId { get; set; }
         [ValidateNever]
         public virtual Speciality Speciality { get; set; }
+        [ValidateNever]
+        public virtual List<Customer> Customer { get; set; }
     }
 }
