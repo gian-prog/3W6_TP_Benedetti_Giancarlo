@@ -1,0 +1,25 @@
+﻿@using JuliePro.ViewModels
+@model List<TrainerObjectivesVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Objectives</h1>
+@foreach(TrainerObjectivesVM trainerObjectives in Model)
+{
+    <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapse@(trainerObjectives.Trainers.Id)">
+                @trainerObjectives.Trainers.FirstName @trainerObjectives.Trainers.LastName — @trainerObjectives.Trainers.Speciality.Name
+            </button>
+        </h2>
+        <div id="collapse@(trainerObjectives.Trainers.Id)" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+
+                </div>
+              </div>
+            </div>
+        </div>
+}
