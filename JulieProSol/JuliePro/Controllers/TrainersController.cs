@@ -88,7 +88,7 @@ namespace JuliePro.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email,Photo,SpecialityID")] Trainer trainer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email,Photo,SpecialityId")] Trainer trainer)
         {
             if (id != trainer.Id)
             {
