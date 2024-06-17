@@ -2,24 +2,25 @@
 @model List<TrainerObjectivesVM>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Objectives";
 }
 
-<h1>Objectives</h1>
-@foreach(var trainerObjectives in Model)
-{
-    <div class="accordion" id="accordionExample">
-    <div class="accordion-item">
-            <h2 class="accordion-header" id="headingOne_@trainerObjectives.Trainers.Id">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse@(trainerObjectives.Trainers.Id)" aria-expanded="true" aria-controls="collapse@(trainerObjectives.Trainers.Id)">
-                @trainerObjectives.Trainers.FirstName @trainerObjectives.Trainers.LastName — @trainerObjectives.Trainers.Speciality.Name
-            </button>
-        </h2>
-        <div id="collapse@(trainerObjectives.Trainers.Id)" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                    <partial name="_TrainerObjectives" />
+<h1>@ViewData["Title"]</h1>
+
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    @foreach (var trainerObjectivesVM in Model)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne_@trainerObjectivesVM.Trainers.Id">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne_@trainerObjectivesVM.Trainers.Id" aria-expanded="false" aria-controls="flush-collapseOne_@trainerObjectivesVM.Trainers.Id">
+                    @trainerObjectivesVM.Trainers.FirstName @trainerObjectivesVM.Trainers.LastName - @trainerObjectivesVM.Trainers.Speciality.Name
+                </button>
+            </h2>
+            <div id="flush-collapseOne_@trainerObjectivesVM.Trainers.Id" class="accordion-collapse collapse" aria-labelledby="flush-headingOne_@trainerObjectivesVM.Trainers.Id" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <partial name="_TrainerObjectives" model="trainerObjectivesVM">
                 </div>
-              </div>
             </div>
         </div>
-}
+    }
+</div>

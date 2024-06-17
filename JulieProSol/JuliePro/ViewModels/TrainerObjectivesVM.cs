@@ -5,7 +5,7 @@ namespace JuliePro.ViewModels
     {
         public Trainer Trainers { get; set; }
         public Objective Objective { get; set; }
-        public IEnumerable<CustomerObjectivesVM> customerObjectives { get; set; }
+        public List<CustomerObjectivesVM> customerObjectives { get; set; }
 
     }
 }

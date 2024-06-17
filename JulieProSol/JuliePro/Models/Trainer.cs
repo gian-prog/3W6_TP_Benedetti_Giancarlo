@@ -22,11 +22,8 @@ namespace JuliePro.Models
         [StringLength(40, ErrorMessage = "The trainer's {0} has a maximum length of {1} characters")]
         public string Photo { get; set; }
 
-
         public int SpecialityId { get; set; }
         [ValidateNever]
         public virtual Speciality Speciality { get; set; }
-        [ValidateNever]
-        public virtual List<Customer> Customer { get; set; }
     }
 }

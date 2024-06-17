@@ -1,12 +1,35 @@
-﻿@model JuliePro.ViewModels.CustomerObjectivesVM
+﻿@using JuliePro.ViewModels
+@model CustomerObjectivesVM
+
+@{
+    int completedObjectives = 0;
+    int incompletedObjectives = 0;
+    foreach (JuliePro.Models.Objective o in Model.Objectives)
+    {
+        completedObjectives = Model.NbreAchieved(Model.Objectives);
+        incompletedObjectives = Model.NbreUnachieved(Model.Objectives);
+
+    }
+
+
+}
+
 <tr>
     <td>@Model.Customers.FirstName @Model.Customers.LastName</td>
-    <td></td>
-    <td></td>
-    ­@{
-        int NbCompleteObjectives = Model.Objectives.Where(o => o.AchievedDate != null).Count();
-        int NBNomCompleteObjectives = Model.Objectives.Where(o => o.AchievedDate == null).Count();
-    }
-    <td>@NbCompleteObjectives</td>
-    <td>@NBNomCompleteObjectives</td>
+    <td>@completedObjectives</td>
+    <td>@incompletedObjectives</td>
+    <td>
+        @switch(incompletedObjectives)
+        {
+            case 0:
+                <i class="text-warning"> It's time to set a new objectives</i>
+                break;
+            case >1 :
+                <i class="text-danger"> Shouldn't have more than 1 objectives</i>
+                break;
+            case 1 :
+                <i class="text-success"> Keep focusing on that objectives</i>
+                break;
+        }
+    </td>
 </tr>

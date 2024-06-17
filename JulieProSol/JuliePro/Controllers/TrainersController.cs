@@ -88,7 +88,7 @@ namespace JuliePro.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email,Photo,Id")] Trainer trainer)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email,Photo,SpecialityID")] Trainer trainer)
         {
             if (id != trainer.Id)
             {
@@ -115,6 +115,7 @@ namespace JuliePro.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["SpecialityID"] = new SelectList(_context.Speciality, "Id", "Name", trainer.SpecialityId);
             return View(trainer);
         }
 

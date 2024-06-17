@@ -23,11 +23,24 @@ namespace JuliePro.Controllers
         // GET: Objectives
         public async Task<IActionResult> AllObjectives()
         {
-            var trainers = _context.Trainer.Include(t => t.Customer).ThenInclude(t=>t.Speciality).Select(t => new TrainerObjectivesVM()
+            List<TrainerObjectivesVM> tlst = new List<TrainerObjectivesVM>();
+            foreach (Trainer t in _context.Trainer.Include(t => t.Speciality))
             {
-                Trainers = t
-            });
-            return View(await trainers.ToListAsync());
+                List<CustomerObjectivesVM> clst = new List<CustomerObjectivesVM>();
+                foreach (Customer c in _context.Customer.Where(C => C.TrainerId == t.Id))
+                {
+                    clst.Add(new CustomerObjectivesVM() { Customers = c, Objectives = _context.Objective.Where(o => o.CustomerId == c.Id).ToList() });
+
+                }
+                tlst.Add(new TrainerObjectivesVM
+                {
+                    Trainers = t,
+                    customerObjectives = clst
+
+                });
+            }
+
+            return View(tlst);
         }
     }
 }

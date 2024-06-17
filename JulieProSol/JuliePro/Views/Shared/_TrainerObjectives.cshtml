@@ -1,15 +1,23 @@
-﻿@using JuliePro.Models;
-@model JuliePro.ViewModels.TrainerObjectivesVM
-<table>
-<tr>
-    <th>Customer's name</th>
-    <th>Nb Completed Objectives</th>
-    <th>Nb Incompleted Objectives</th>
-    <th>Status</th>
-</tr>
-    @foreach (var customer in Model.customerObjectives)
-    {
-        <partial name="_CustomerObjectives" model="customer"/>
-    }
+﻿@using JuliePro.ViewModels
+@model TrainerObjectivesVM
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Customer's Name</th>
+            <th>Nb Completed Objectives</th>
+            <th>Nb Incompleted Objectives</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (CustomerObjectivesVM c in Model.customerObjectives)
+        {
+            @Html.Partial("_CustomerObjectives", c)
+        }
+    </tbody>
 
 </table>
